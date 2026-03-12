@@ -43,14 +43,20 @@ const Navbar = () => {
               {Links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Book Vibe</a>
+          <a className=" text-xl text-[rgba(19,19,19,1)] font-bold">
+            Book Vibe
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{Links}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Sign In</a>
-          <a className="btn">Sign Up</a>
+        <div className="navbar-end gap-4">
+          <a className="btn py-4 px-5 rounded-lg bg-[rgba(35,190,10,1)] text-white">
+            Sign In
+          </a>
+          <a className="btn py-4 px-5 rounded-lg bg-[rgba(89,198,210,1)] text-white">
+            Sign Up
+          </a>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ const Banner = () => {
           </h1>
           <button
             className="rounded-xl bg-[rgba(35,190,10,1)] text-white text-[20px] font-bold text-center
-         py-3 px-7"
+         py-3 px-7 mt-4"
           >
             View The List
           </button>
