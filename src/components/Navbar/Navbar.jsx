@@ -1,16 +1,17 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Navbar = () => {
   const Links = (
     <>
       <li>
-        <a>Home</a>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <a>Listed Books</a>
+        <Link to="/listed-books">Listed Books</Link>
       </li>
       <li>
-        <a>Pages To Read</a>
+        <Link to="/pages-to-read">Pages To Read</Link>
       </li>
     </>
   );
@@ -27,13 +28,12 @@ const Navbar = () => {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                {" "}
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
+                />
               </svg>
             </div>
             <ul
@@ -48,7 +48,7 @@ const Navbar = () => {
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{Links}</ul>
+          <ul className="menu menu-horizontal px-1 gap-4">{Links}</ul>
         </div>
         <div className="navbar-end gap-4">
           <a className="btn py-4 px-5 rounded-lg bg-[rgba(35,190,10,1)] text-white">
