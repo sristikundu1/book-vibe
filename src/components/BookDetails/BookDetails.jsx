@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router";
 import { useParams } from "react-router";
+import { addBookId } from "../../utils/localstorage";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -23,6 +24,10 @@ const BookDetails = () => {
     tags,
     review,
   } = singleBook;
+
+  const handleRead = (id) => {
+    addBookId(id);
+  };
 
   return (
     <div className="max-w-10/12 mx-auto my-5">
@@ -85,7 +90,10 @@ const BookDetails = () => {
             </p>
 
             <div className="flex gap-4">
-              <button className="btn btn-neutral btn-outline border-[rgba(19,19,19,0.3)]  ">
+              <button
+                onClick={() => handleRead(id)}
+                className="btn btn-neutral btn-outline border-[rgba(19,19,19,0.3)]  "
+              >
                 Read
               </button>
               <button className="btn py-4 px-5 rounded-sm bg-[rgba(89,198,210,1)] text-white">
