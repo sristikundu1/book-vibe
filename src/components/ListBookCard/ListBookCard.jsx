@@ -2,7 +2,7 @@ import { MapPin, StickyNote, Users } from "lucide-react";
 import React from "react";
 import { Link } from "react-router";
 
-const ListBookCard = ({ book }) => {
+const ListBookCard = ({ book, onRemove }) => {
   const {
     bookId,
     image,
@@ -14,7 +14,6 @@ const ListBookCard = ({ book }) => {
     yearOfPublishing,
     rating,
     tags,
-    review,
   } = book;
   return (
     <div>
@@ -76,7 +75,10 @@ const ListBookCard = ({ book }) => {
               </button>
             </Link>
 
-            <button className="btn py-4 px-5 rounded-2xl bg-[rgba(89,198,210,1)] text-white ">
+            <button
+              onClick={() => onRemove(bookId)}
+              className="btn py-4 px-5 rounded-2xl bg-[rgba(89,198,210,1)] text-white "
+            >
               Remove
             </button>
           </div>

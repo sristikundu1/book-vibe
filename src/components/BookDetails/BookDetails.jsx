@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router";
 import { useParams } from "react-router";
 import { addBookId } from "../../utils/localstorage";
+import Swal from "sweetalert2";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -26,7 +27,31 @@ const BookDetails = () => {
   } = singleBook;
 
   const handleRead = (id) => {
-    addBookId(id);
+    addBookId(id, "ReadBook");
+    Swal.fire({
+      title: "Good job!",
+      text: "You added the book in your bookList!",
+      icon: "success",
+    });
+  };
+
+  const handleWish = (id) => {
+    addBookId(id, "WishListBook");
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: "success",
+      title: "The Book added in your wishlist",
+    });
   };
 
   return (
@@ -96,7 +121,10 @@ const BookDetails = () => {
               >
                 Read
               </button>
-              <button className="btn py-4 px-5 rounded-sm bg-[rgba(89,198,210,1)] text-white">
+              <button
+                onClick={() => handleWish(id)}
+                className="btn py-4 px-5 rounded-sm bg-[rgba(89,198,210,1)] text-white"
+              >
                 WishList
               </button>
             </div>

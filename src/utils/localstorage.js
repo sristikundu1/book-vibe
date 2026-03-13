@@ -1,5 +1,5 @@
-const getStoreBook = () =>{
-const getBookId = localStorage.getItem('ReadBook')
+const getStoreBook = (key) =>{
+const getBookId = localStorage.getItem(key)
 
 if(getBookId){
     const storeBookData = JSON.parse(getBookId)
@@ -10,8 +10,8 @@ else{
 }
 }
 
-const addBookId = id =>{
-    const storeBook = getStoreBook();
+const addBookId = (id,key) =>{
+    const storeBook = getStoreBook(key).map(Number);;
 
     if(storeBook.includes(id)){
         alert("data is already included")
@@ -19,8 +19,14 @@ const addBookId = id =>{
     else{
         storeBook.push(id)
         const addBookData = JSON.stringify(storeBook)
-        localStorage.setItem('ReadBook',addBookData)
+        localStorage.setItem(key,addBookData)
     }
 }
 
-export{addBookId,getStoreBook}
+const removeBookId = (id,key) => {
+  const RemoveStoreBooks = getStoreBook(key).map(Number);; // get current stored books
+  const updatedBooks = RemoveStoreBooks.filter((bookId) => bookId !== id); // remove the id
+  localStorage.setItem(key, JSON.stringify(updatedBooks)); // save updated array
+};
+
+export{addBookId,getStoreBook,removeBookId}
